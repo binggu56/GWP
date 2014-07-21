@@ -1,0 +1,7 @@
+set term postscript eps enhanced color 
+set size 0.6,0.6
+set output 'xav.eps' 
+set yr [1.35:1.55]
+plot 'aver' u 1:2 w l  lw 2 ti 'LQF with cutoff',  \
+     '../spo_1d/aver' u 1:2 w l lw 2 ti 'QM' 
+

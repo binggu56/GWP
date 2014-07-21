@@ -1,0 +1,32 @@
+
+1D QTM code with Gassian Basis 
+
+analytic expression for matrix elements
+
+system: Morse
+
+number of basis:  12
+
+version: 1.4
+
+
+ norm w & expec of x  0.99999998236534637        1.3999999753114847     
+ grid range  0.52819516626582608        2.2718048337341736       0.15850996976984977     
+Initial Conditions
+
+al    = 120.000000
+a0    =   9.160000
+Ntraj =     12
+Kmax  =    500
+dt    =   0.200000
+kout  =    100
+Mass  = 918.000000
+p0    =   0.000000
+q0    =   1.400000
+
+
+Computing inital coefficients
+
+Condition Number of overlap matrix: 0.116449E+02
+Normalization =  0.999970
+ The algorithm failed to compute eigenvalues.

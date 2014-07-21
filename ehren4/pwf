@@ -1,0 +1,6 @@
+set xr [0.5:3]
+plot 't100/wf.dat' u 1:2 w l, \
+     't300/wf.dat' u 1:2 w l, \
+     't500/wf.dat' u 1:2 w l, \
+     't600/wf.dat' u 1:2 w l, \
+     'wf0.dat' u 1:2 pt 3 ti 'psi0'
