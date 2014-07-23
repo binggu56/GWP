@@ -1,4 +1,4 @@
-ss[11pt]{article}
+\documentclass[11pt]{article}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{epstopdf}
@@ -43,11 +43,11 @@ The equations for evolution of $\bm c$ will be
 where 
 \be \dot{\bf M}_{mn} = \bra g_{m} | \dot{g_{n}} \ket \ee 
 and ${\bf H}$ is the hamiltonian matrix,   
-\be   {\bf H}_{mn} = \bra g_{m} | -\frac{\hbar^{2}}{2m}\grad^{2} + V(x) | g_{n} \ket . \ee
+\be H_{mn} = \bra g_{m} | -\frac{\hbar^{2}}{2m}\grad^{2} + V(x) | g_{n} \ket . \ee
 Potential energy is expanded into second-order Taylor series at  position of each trajectory
 \be V(x) = V(q_{n}) + \grad V(q_{n} ) (x-q_{n}) + \frac{\grad^{2} V(q_{n})}{2}(x-q_{n})^{2} + O((x-q_{n})^{3}) \label{eq:taylor} \ee 
 Substituting Eq. (\ref{eq:taylor}) to Eq. (\ref{eq:dcdt}) and ignore the third-order term, we will obtain 
-\be {\bf H}_{mn} = \bra g_{m} | d_{0}+d_{1}(x-q_n)+d_{2}(x-q_n)^2 | g_{n} \ket . \ee
+\be H_{mn} - \im \dot{M}_{mn} = \bra g_{m} | d_{0}+d_{1}(x-q_n)+d_{2}(x-q_n)^2 | g_{n} \ket . \ee
 \be d_{0} = V(x_{n}) - \frac{p^{2}_{n}-\alpha}{2m},~~d_{1} = -\grad U(x_{n}), ~~ d_{2} = \frac{1}{2} \left (\grad^{2}V(x_{n}) - \frac{\alpha^{2}}{m} \right) \ee 
 
 \section{System}
