@@ -152,11 +152,14 @@ quantum potential for excites states will not have ``bad'' singular points, i.e.
 So if we have a constraint form to represent wavefunction, we may be able to get excited energy.
 
 Questions: 
-1) does quantum trajectories stop at excited states? 
-(Does quantum force computed from excited state wavefunction cancels the classcal force? try harmonic, probabality not, if not how they move?)
+1) does quantum trajectories stop at excited states?
+yes, for eigenstates of hamiltonian, quantum trajectories do not move, however, if the initial wavefunction is not eigenstates, then the quantum potential at the  node will become infinity. A linear fitting may not be accurate enough.  
+Does quantum force computed from excited state wavefunction cancels the classcal force? 
+yes 
 
-2) is there a form that will have flexibility to represent wavefunction as well as keeping the number of nodes? what about 
-linear combination of ground state and first excited state? 
+2) is there a form that will have flexibility to represent wavefunction as well as keeping the number of nodes? 
+what about linear combination of ground state and first excited state?  
+\be \psi(x) = c_0(x+c_1)\exp(-\alpha(x-x_0)^2) \ee 
 
 
 
