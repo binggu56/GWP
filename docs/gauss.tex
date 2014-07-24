@@ -161,6 +161,13 @@ yes
 what about linear combination of ground state and first excited state?  
 \be \psi(x) = c_0(x+c_1)\exp(-\alpha(x-x_0)^2) \ee 
 
+\subsection{new repulsive force}
+
+try new repulsive force 
+\be f_{rep}(r) = 1 - \frac{1}{1+\exp(-2k(r-r_0))} \ee 
+smooth heaviside function, set $r_0$ as $2\sigma$, put the repulsive force back into the equations of motion for trajectories $(q_i,p_i)$, we still get ``exact'' matrix equation to update coefficients. 
+
+The goal is to not let two trajectories get too close, which will cause matrix to be ill-conditioned. 
 
 
 
