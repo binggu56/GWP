@@ -1,7 +1,0 @@
-compute quantum potential from wave function, 
-which is a linear combination of gaussian basis
- 
-Numerical derivative for high-order derivatives
-df/dx = [f(x+h)-f(x)]/h
-
-

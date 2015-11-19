@@ -1,7 +1,0 @@
-set yr [0:3]
-set xr [0.5:3]
-plot 't100/wf.dat' u 1:2 w l lw 2, \
-     't300/wf.dat' u 1:2 w l lw 2, \
-     't500/wf.dat' u 1:2 w l lw 2, \
-     't600/wf.dat' u 1:2 w l lw 2, \
-     'wf0.dat' u 1:2 pt 3 ti 'psi0'
