@@ -1,20 +1,3 @@
-      
-      module cdat
-
-      integer*4 :: ipot 
-
-      real*8,public,parameter :: pi=4.d0*atan(1.0)
-      
-      complex*16,public,parameter::im=(0d0,1d0)
-
-      real*8 :: al,beta 
- 
-      integer*4 ::  Ntraj,kmax,kout,idum1,order
-      real*8 :: dt,am,a0,q0,p0
-      real*8 :: xmin,xmax
-      save
-      end module cdat
-
       program main
 !----------------------------------------------------------------
 !     trajectory guided gaussian basis
@@ -36,7 +19,7 @@
       
       complex*16,dimension(:,:),allocatable :: h,mat
      	real*8 :: f(3),ki,ncm
-      complex*16, allocatable :: c(:),dc(:)
+      complex*16, allocatable, dimension(:) :: c,dc,cold,cnew
       real*8 :: gasdev,norm 
       integer*4 :: order 
 
@@ -117,7 +100,7 @@
       nb = 1 
       xx = xl 
       z0 = psi(xl,nb0,c0,q0,p0,s0)  
-      eps = 1d-2
+      eps = 5d-3
 
       k = 0 
       do i=1,nmax 
@@ -138,6 +121,7 @@
 
       allocate(mat(Ntraj,Ntraj))
       allocate(c(Ntraj),h(Ntraj,Ntraj),dc(Ntraj))
+      allocate(cold(ntraj),cnew(ntraj))
 
       anrm = dsqrt(dsqrt(al/pi))
       c = (0d0,0d0) 
@@ -183,7 +167,7 @@
 !      write(*,*) xl,gx
 
 !     print out the initial conditions        
-      write(*,1001) sigma**2,gx,nb,kmax,dt,kout,am
+      write(*,1001) sigma,gx,nb,kmax,dt,kout,am
 1001  format('Initial Conditions'//, &
             'variance = ', f10.6/, &
             'traj spacing = ', f10.6/, & 
@@ -248,7 +232,12 @@
       write(107,1000) t,(abs(c(i)),i=1,Ntraj)
       dt = dt/kout
       dt2 = dt/2d0
-!      t = 0d0
+
+
+      call ham(c,nb,x,p,s,dc)
+
+      cold = c
+      c = c + dc*dt
 
 !-----begin the time step loop----------
       time: do k=1,kmax
@@ -256,17 +245,16 @@
         do 13 kk=1,kout
           t = t+dt
 
-          do i=1,Nb
-            c(i) = c(i)+dt2*dc(i)
-          enddo
-         
           call mom(nb,x,p,c,s)
          
 ! ----  half-step increments of moment, full step increment of positions
           x = x + p*dt/am 
           
           call ham(c,nb,x,p,s,dc)
-          c = c + dc*dt2 
+          cnew = cold + dc*2d0*dt
+          cold = c
+          c = cnew
+
 !-------------update dc/dt--------------------
 
         anm  = norm(nb,x,p,c,s)
@@ -349,6 +337,8 @@
       write(114,*) (c(i),i=1,nb)
       close(114) 
 
+      write(6,1111) t 
+1111  format('ENDING TIME = ',f5.2) 
 
 1000 format(200(e14.7,1x))
       end program main
@@ -594,7 +584,7 @@
       end subroutine
 
 
-      subroutine ham(c,nb,q,p,s,dc)
+      subroutine ham0(c,nb,q,p,s,dc)
       
       use cdat
       

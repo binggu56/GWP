@@ -4,8 +4,10 @@
 #	rm -r $1
 #fi
 #mkdir $1
-
-
+cd .. 
+make 
+./qm.x 
+cd resample
 rm *.dat
 cp ../temp.dat . 
 cp ../cor.dat .

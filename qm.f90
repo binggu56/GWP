@@ -152,17 +152,17 @@
 1015  format('initial expansion coeff   = '//,20('(',f5.2,',',f5.2,')',1x)/)  
 
 !------check normalization--------------
-!      z1 = (0d0,0d0) 
-!      do i=1,np
-!        xi = xmin+dx*(i-1)
-!        call psi(xi,nb,c,x,s,z0)
-!        z1 = z1+conjg(z0)*z0*dx
-!        if(abs(z0).gt.1d-3) write(104,1000) xi,abs(z0)**2
-!      enddo
+      z1 = (0d0,0d0) 
+      do i=1,np
+        xi = xmin+dx*(i-1)
+        call psi(xi,nb,c,x,s,z0)
+        z1 = z1+conjg(z0)*z0*dx
+        if(abs(z0).gt.1d-3) write(104,1000) xi,abs(z0)**2
+      enddo
       
       call norm(nb,x,p,c,s,anrm)
-      write(*,1013)  anrm  
-1013  format('initial normalization =', f12.5/)
+      write(*,1013)  anrm,real(z1)   
+1013  format('initial normalization =', 2f12.5/)
       
 
 
@@ -657,7 +657,8 @@
       elseif(ipot == 2) then 
       
         D = 16d0 
-        a = 1.3624d0 
+!        a = 1.3624d0 
+        a = 1d0 
         v = D/cosh(a*x)**2
         ddv = 6d0*D*a**2*sinh(a*x)**2/cosh(a*x)**4-2d0*D*a**2/cosh(a*x)**2
       endif 
