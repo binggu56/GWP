@@ -24,7 +24,7 @@
       use cdat, only:al,pi,im,am,beta 
 
       implicit real*8(a-h,o-z)
-      integer*4, parameter :: nmax=40 
+      integer*4, parameter :: nmax=100 
 
       real*8, allocatable, dimension(:) :: q0,p0,s0 
       complex*16, allocatable, dimension(:) :: c0
@@ -88,8 +88,8 @@
 
 !     grid size
       np = 1000
-      xmin = -5d0
-      xmax = 5d0
+      xmin = -10d0
+      xmax = 10d0
       dx = (xmax-xmin)/dble(np-1)
 
       sigma = dsqrt(1d0/2d0/al) 
@@ -121,7 +121,7 @@
 
       k = 0 
       do i=1,nmax 
-        xi = -5.d0+ gx*(i-1)  
+        xi = -6.d0+ gx*(i-1)  
         z0 = psi(xi,nb0,c0,q0,p0,s0)
         if(abs(z0).gt.eps) then 
           k = k+1
@@ -183,7 +183,7 @@
 !      write(*,*) xl,gx
 
 !     print out the initial conditions        
-      write(*,1001) sigma,gx,nb,kmax,dt,kout,am
+      write(*,1001) sigma**2,gx,nb,kmax,dt,kout,am
 1001  format('Initial Conditions'//, &
             'variance = ', f10.6/, &
             'traj spacing = ', f10.6/, & 
