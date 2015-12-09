@@ -56,7 +56,7 @@ plt.plot(dat[:,0],dat[:,1],'ko',markersize=4)
 plt.xlabel('x [Bohr]')
 plt.ylabel('y [Bohr]')
 plt.xlim(-4,4)
-plt.ylim(-3.6,3.6)
+plt.ylim(-3.6,3)
 
 plt.savefig('contour.pdf')
 plt.show()
