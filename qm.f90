@@ -958,7 +958,16 @@
       return
       end subroutine
 
-      
+
+      double precision function gasint(a0,x0,a1,x1)       
+      real (kind = 8) implicit (a-h, o-z) 
+
+      dx = x1 - x0 
+      gasint = (a0*a1)**0.25d0*sqrt(2d0/(a0+a1))*exp(-a0*a1/(2d0*(a0+a1))*dx**2)
+
+
+      return 
+      end function 
 
 !      subroutine reproj(nb,x,p,s,c)
 !      use cdat
